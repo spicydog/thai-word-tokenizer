@@ -7,23 +7,31 @@ var thaiWords;
 var wordTree;
 
 // Retrive dictionary from internet or local storage
-function requestRawDocumentFromSources() {
+function buildThaiDictionary() {
   thaiWords = {};
   wordTree = {};
   compoundWords = {};
-  jQuery.ajaxSetup({async:false});
-  for(var i in dictionaryNames) {
 
+  var requestCount = 0;
+  console.log('start building dictionary');
+  for(var i in dictionaryNames) {
     var fullDocURL = dictionaryURL + dictionaryNames[i];
 
     if(localStorage.getItem(fullDocURL) && typeof(Storage) !== "undefined") { // Cache hit
       readDictionry(localStorage.getItem(fullDocURL));
     } else {
+      requestCount++;
       $.get(fullDocURL,function (response) { // Request from internet
         if(typeof(Storage) !== "undefined") {
           localStorage.setItem(fullDocURL, response);
         }
         readDictionry(response);
+        requestCount--;
+        if(requestCount==0) {
+          console.log('finish building dictionary');
+        } else {
+          console.log(requestCount + " left");
+        }
       });
     }
   }
@@ -36,11 +44,18 @@ function requestRawDocumentFromSources() {
       // readDictionry(localStorage.getItem(fullDocURL));
     // } else {
       $.get(fullDocURL,function (response) { // Request from internet
+        requestCount++;
         // if(typeof(Storage) !== "undefined") {
         //   localStorage.setItem(fullDocURL, response);
         // }
         // readDictionry(localStorage.getItem(fullDocURL));
         readDictionry(response);
+        requestCount--;
+        if(requestCount==0) {
+          console.log('finish building dictionary');
+        } else {
+          console.log(requestCount + " left");
+        }
       });
     // }
   }
