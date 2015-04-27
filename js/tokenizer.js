@@ -149,9 +149,9 @@ function breakThaiWords(string) {
         }
 
         if(compoundWords[checkWord]) {
-          compoundWords = compoundWords[checkWord]
-          for(var j in compoundWords) {
-            words[index++] = compoundWords[j];
+          brokenWords = compoundWords[checkWord]
+          for(var j in brokenWords) {
+            words[index++] = brokenWords[j];
           }
           index--;
         } else {
@@ -177,7 +177,9 @@ function breakThaiWords(string) {
         currentWord = c;
       }
     }
-
+  }
+  if(badWord!='') {
+    words[index] = badWord;
   }
   return words;
 }
