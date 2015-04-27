@@ -39,7 +39,8 @@ function requestRawDocumentFromSources() {
         // if(typeof(Storage) !== "undefined") {
         //   localStorage.setItem(fullDocURL, response);
         // }
-        readDictionry(localStorage.getItem(fullDocURL));
+        // readDictionry(localStorage.getItem(fullDocURL));
+        readDictionry(response);
       });
     // }
   }
