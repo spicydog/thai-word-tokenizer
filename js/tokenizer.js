@@ -62,6 +62,7 @@ function buildThaiDictionary() {
 }
 
 function callAjax(url, callback){
+// Code from: http://stackoverflow.com/a/18324384/967802
     var xmlhttp;
     // compatible with IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
