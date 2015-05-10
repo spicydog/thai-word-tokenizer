@@ -21,7 +21,7 @@ function buildThaiDictionary() {
       readDictionry(localStorage.getItem(fullDocURL));
     } else {
       requestCount++;
-      $.get(fullDocURL,function (response) { // Request from internet
+      callAjax(fullDocURL,function(response) { // Request from internet
         if(typeof(Storage) !== "undefined") {
           localStorage.setItem(fullDocURL, response);
         }
@@ -43,7 +43,7 @@ function buildThaiDictionary() {
     // if(localStorage.getItem(fullDocURL) && typeof(Storage) !== "undefined") { // Cache hit
       // readDictionry(localStorage.getItem(fullDocURL));
     // } else {
-      $.get(fullDocURL,function (response) { // Request from internet
+      callAjax(fullDocURL,function(response) { // Request from internet
         requestCount++;
         // if(typeof(Storage) !== "undefined") {
         //   localStorage.setItem(fullDocURL, response);
@@ -59,6 +59,19 @@ function buildThaiDictionary() {
       });
     // }
   }
+}
+
+function callAjax(url, callback){
+    var xmlhttp;
+    // compatible with IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            callback(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }
 
 function readDictionry(words) {
