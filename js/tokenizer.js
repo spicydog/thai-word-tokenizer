@@ -1,6 +1,6 @@
 var dictionaryNames = ["tdict-city.txt", "tdict-collection.txt", "tdict-common.txt", "tdict-country.txt", "tdict-district.txt", "tdict-geo.txt", "tdict-history.txt", "tdict-ict.txt", "tdict-lang-ethnic.txt", "tdict-proper.txt", "tdict-science.txt", "tdict-spell.txt", "tdict-std-compound.txt", "tdict-std.txt"];
 var compoundDictionryNames = ["compound-words.txt"];
-var dictionaryURL = 'https://spicydog.github.io/ThaiTokenizer/data/';
+var dictionaryURL = 'https://cdn.rawgit.com/spicydog/thai-word-tokenizer/master/data/';
 
 var compoundWords;
 var thaiWords;
@@ -62,6 +62,7 @@ function buildThaiDictionary() {
 }
 
 function callAjax(url, callback){
+// Code from: http://stackoverflow.com/a/18324384/967802
     var xmlhttp;
     // compatible with IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp = new XMLHttpRequest();
