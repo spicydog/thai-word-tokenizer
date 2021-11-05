@@ -8,4 +8,4 @@ The algorithm compare string with words in a dictionary and select the longest w
 
 Since the program relies on very basic algorithm, it cannot handle abiguity problem properly, so beware of the applications.
 
-You can try the demo application here https://cdn.rawgit.com/spicydog/thai-word-tokenizer/master/
+You can try the demo here https://thai-word-tokenizer.pages.dev/
